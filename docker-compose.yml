@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # 🔗 MongoDB Service
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: devuser
+      MONGO_INITDB_ROOT_PASSWORD: devpassword
+    volumes:
+      - mongo-data:/data/db
+
+  # 🔗 Backend Service
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://devuser:devpassword@mongo:27017/my_database
+      AWS_ACCESS_KEY_ID: local_access_key
+      AWS_SECRET_ACCESS_KEY: local_secret_key
+    depends_on:
+      - mongo
+
+  # 🔗 Frontend Service
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
+    driver: local

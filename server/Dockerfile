@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE 5000
 
-CMD ["node", "server.js"]
+CMD ["node", "dist/index.js"]
