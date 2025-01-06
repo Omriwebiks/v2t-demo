@@ -14,9 +14,8 @@ const VideoImg = ({ title, project }: VideoImgProps) => (
         alt="placeholder"
         sx={{
           width: "80%",
-          height: "auto",
-          maxWidth: "150px",
-          borderRadius: 2,
+          maxWidth: "100%",
+          borderRadius: "8%",
         }}
       />
       <Typography variant="h6" component="div">

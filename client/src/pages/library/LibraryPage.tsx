@@ -48,7 +48,19 @@ export default function LibraryPage() {
         }}
       >
         {videos.map((video, index) => (
-          <Box key={index} sx={{ width: "calc(20% - 15px)" }}>
+          <Box
+            key={index}
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "48%",
+                md: "30%",
+                lg: "17%",
+              },
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <VideoImg title={video.title} project={video.project} />
           </Box>
         ))}
