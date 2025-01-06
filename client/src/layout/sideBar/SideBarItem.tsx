@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   ListItem,
   ListItemButton,
@@ -9,16 +10,22 @@ import {
 export default function SideBarItem({
   icon,
   text = "",
+  link,
 }: {
   icon: JSX.Element;
   text?: string;
+  link?: string;
 }) {
   return (
     <ListItem>
       <ListItemButton
+        component={link ? Link : "div"}
+        to={link}
         sx={{
           display: "flex",
           flexDirection: "column",
+          textDecoration: "none",
+          color: "inherit",
         }}
       >
         <ListItemIcon

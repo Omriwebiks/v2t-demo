@@ -65,8 +65,16 @@ export default function SideBar() {
             </Box>
           }
         />
-        <SideBarItem icon={<HomeIcon />} text={isMobile ? "" : "Player"} />
-        <SideBarItem icon={<MenuBookIcon />} text={isMobile ? "" : "Library"} />
+        <SideBarItem
+          icon={<HomeIcon />}
+          text={isMobile ? "" : "Player"}
+          link="/"
+        />
+        <SideBarItem
+          icon={<MenuBookIcon />}
+          text={isMobile ? "" : "Library"}
+          link="/library"
+        />
         <SideBarItem icon={<StarsIcon />} text={isMobile ? "" : "Favorites"} />
         <SideBarItem icon={<StarsIcon />} text={isMobile ? "" : "Projects"} />
       </List>
