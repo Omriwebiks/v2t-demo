@@ -75,7 +75,11 @@ export default function SideBar() {
           text={isMobile ? "" : "Library"}
           link="/library"
         />
-        <SideBarItem icon={<StarsIcon />} text={isMobile ? "" : "Favorites"} />
+        <SideBarItem
+          icon={<StarsIcon />}
+          text={isMobile ? "" : "Favorites"}
+          link="/favorites"
+        />
         <SideBarItem icon={<StarsIcon />} text={isMobile ? "" : "Projects"} />
       </List>
     </Box>
