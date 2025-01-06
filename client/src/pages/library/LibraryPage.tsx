@@ -23,6 +23,7 @@ export default function LibraryPage() {
           gap: 0.5,
           display: "flex",
           flexWrap: "wrap",
+          marginTop: 2,
         }}
       >
         {categories.map((category) => (
