@@ -1,7 +1,8 @@
 import React from "react";
-import HomePage from "./pages/home/HomePage";
+// import HomePage from "./pages/home/HomePage";
 import SideBar from "./layout/sideBar/SideBar";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import LibraryPage from "./pages/library/LibraryPage";
 
 function App() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -23,7 +24,8 @@ function App() {
           marginLeft: isMobile ? "0" : "60px",
         }}
       >
-        <HomePage />
+        {/* <HomePage /> */}
+        <LibraryPage />
       </div>
     </div>
   );
