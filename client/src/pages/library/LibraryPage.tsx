@@ -35,7 +35,7 @@ export default function LibraryPage() {
             clickable
             variant={category === selectedCategory ? "filled" : "outlined"}
             sx={{
-              width: "7%",
+              width: "80px",
               borderRadius: "8px",
               fontSize: "1rem",
             }}

@@ -22,9 +22,8 @@ export default function InfroCard({
         <Typography
           variant="h6"
           sx={{
-            mb: 2,
             fontWeight: 700,
-            fontSize: "1.1rem",
+            fontSize: "2rem",
           }}
         >
           {title}

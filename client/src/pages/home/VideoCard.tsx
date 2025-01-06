@@ -4,8 +4,8 @@ export default function VideoCard({ src, alt }: { src: string; alt: string }) {
   return (
     <Paper
       sx={{
-        height: "392px",
-        width: "798px",
+        height: "60vh",
+        width: "100%",
         borderRadius: "25px",
         overflow: "hidden",
         bgcolor: "#e9ecef",
