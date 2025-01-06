@@ -9,10 +9,8 @@ const HomePage = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
         gap: 4,
-        marginTop: 4,
-        paddingX: 2,
-        width: "100%",
       }}
     >
       <Box
@@ -34,7 +32,10 @@ const HomePage = () => {
           gap: 3,
           width: "100%",
           maxWidth: "798px",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: "row",
+          "@media (max-width: 900px)": {
+            flexDirection: "column",
+          },
         }}
       >
         <InfroCard

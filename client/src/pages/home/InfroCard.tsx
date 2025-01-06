@@ -14,7 +14,6 @@ export default function InfroCard({
         elevation={3}
         sx={{
           flex: title === "GT" ? "1" : "2",
-          height: "232px",
           p: 3,
           borderRadius: "25px",
           bgcolor: "white",

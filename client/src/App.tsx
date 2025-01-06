@@ -1,17 +1,31 @@
-import { Box } from "@mui/material";
-import "./App.css";
-import SideBar from "./layout/sideBar/SideBar";
+import React from "react";
 import HomePage from "./pages/home/HomePage";
+import SideBar from "./layout/sideBar/SideBar";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
-    <Box sx={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        height: "100vh",
+      }}
+    >
       <SideBar />
 
-      <Box sx={{ flexGrow: 1 }}>
+      <div
+        style={{
+          flex: 1,
+          marginTop: isMobile ? "60px" : "0",
+          marginLeft: isMobile ? "0" : "60px",
+        }}
+      >
         <HomePage />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }
 
