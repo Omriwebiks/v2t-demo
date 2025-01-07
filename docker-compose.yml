@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # 🔗 MongoDB Service
   mongo:
     image: mongo:6.0
     container_name: mongo
@@ -13,7 +12,6 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  # 🔗 Backend Service
   backend:
     build:
       context: ./server
@@ -37,7 +35,6 @@ services:
               count: ${GPU_COUNT:-0}
     runtime: nvidia
 
-  # 🔗 Frontend Service
   frontend:
     build:
       context: ./client
