@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Chip, Typography } from "@mui/material";
 import VideoImg from "./VideoImg";
+import CheckIcon from "@mui/icons-material/Check";
 
 const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];
 const videos = new Array(20).fill(0).map((_, index) => ({
@@ -31,15 +32,31 @@ export default function LibraryPage() {
         {categories.map((category) => (
           <Chip
             key={category}
-            label={category}
+            label={
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
+              >
+                {category === selectedCategory && (
+                  <CheckIcon fontSize="small" />
+                )}
+                {category}
+              </Box>
+            }
             color={category === selectedCategory ? "primary" : "default"}
             onClick={() => handleCategoryChange(category)}
             clickable
             variant={category === selectedCategory ? "filled" : "outlined"}
             sx={{
-              width: "80px",
-              borderRadius: "8px",
+              width: "10%",
               fontSize: "1rem",
+              backgroundColor:
+                category === selectedCategory ? "#E8DEF8" : "white",
+              color: category === selectedCategory ? "black" : "gray",
+              borderRadius: "8px",
             }}
           />
         ))}

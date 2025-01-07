@@ -36,7 +36,7 @@ const ModeToggle: React.FC<ModeToggleProps> = ({ items, view, setView }) => {
           <span style={{ display: "inline-flex", alignItems: "center" }}>
             {view === mode && <CheckIcon fontSize="small" />}{" "}
           </span>
-          {mode.charAt(0).toUpperCase() + mode.slice(1)}
+          {mode}
         </Button>
       ))}
     </ButtonGroup>
