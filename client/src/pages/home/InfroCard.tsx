@@ -11,12 +11,13 @@ export default function InfroCard({
   return (
     <>
       <Paper
-        elevation={3}
+        elevation={8}
         sx={{
           flex: title === "GT" ? "1" : "2",
           p: 3,
           borderRadius: "25px",
-          bgcolor: "white",
+          bgcolor: "grey.100",
+          overflow: "clip",
         }}
       >
         <Typography
@@ -32,7 +33,7 @@ export default function InfroCard({
           variant="body2"
           sx={{
             color: "text.secondary",
-            lineHeight: 1.6,
+            lineHeight: 1.2,
           }}
         >
           {content}
