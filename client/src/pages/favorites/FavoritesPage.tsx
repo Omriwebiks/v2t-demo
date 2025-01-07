@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Chip, Container, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import VideoImg from "../library/VideoImg";
 
 const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];
@@ -15,15 +15,14 @@ export default function FavoritesPage() {
     setSelectedCategory(category);
   };
   return (
-    <Container sx={{ paddingTop: 1 }}>
+    <Box>
       <Typography>Favorites</Typography>
       <Box
         sx={{
           width: "100%",
           gap: 0.5,
           display: "flex",
-          flexWrap: "wrap",
-          marginTop: 2,
+          marginBottom: 2,
         }}
       >
         {categories.map((category) => (
@@ -35,7 +34,7 @@ export default function FavoritesPage() {
             clickable
             variant={category === selectedCategory ? "filled" : "outlined"}
             sx={{
-              width: "7%",
+              width: "80px",
               borderRadius: "8px",
               fontSize: "1rem",
             }}
@@ -56,7 +55,7 @@ export default function FavoritesPage() {
                 xs: "100%",
                 sm: "48%",
                 md: "30%",
-                lg: "17%",
+                lg: "19%",
               },
               display: "flex",
               justifyContent: "center",
@@ -66,6 +65,6 @@ export default function FavoritesPage() {
           </Box>
         ))}
       </Box>
-    </Container>
+    </Box>
   );
 }

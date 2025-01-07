@@ -17,9 +17,10 @@ function App() {
       <SideBar />
       <div
         style={{
+          display: "flex",
           flex: 1,
-          marginTop: isMobile ? "60px" : "0",
-          marginLeft: isMobile ? "0" : "60px",
+          marginTop: "2%",
+          marginLeft: isMobile ? "5%" : "2%",
         }}
       >
         {<AppRouter />}

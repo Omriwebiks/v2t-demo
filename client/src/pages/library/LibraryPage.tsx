@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box, Chip } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import VideoImg from "./VideoImg";
 
 const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];
@@ -16,14 +16,16 @@ export default function LibraryPage() {
   };
 
   return (
-    <Container sx={{ paddingTop: 1 }}>
+    <Box>
+      <Typography>Library</Typography>
+
       <Box
         sx={{
           width: "100%",
           gap: 0.5,
           display: "flex",
           flexWrap: "wrap",
-          marginTop: 2,
+          marginBottom: 2,
         }}
       >
         {categories.map((category) => (
@@ -56,7 +58,7 @@ export default function LibraryPage() {
                 xs: "100%",
                 sm: "48%",
                 md: "30%",
-                lg: "17%",
+                lg: "19%",
               },
               display: "flex",
               justifyContent: "center",
@@ -66,6 +68,6 @@ export default function LibraryPage() {
           </Box>
         ))}
       </Box>
-    </Container>
+    </Box>
   );
 }

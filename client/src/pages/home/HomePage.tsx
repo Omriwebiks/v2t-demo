@@ -1,15 +1,15 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import InfroCard from "./InfroCard";
 import VideoCard from "./VideoCard";
 
 const HomePage = () => {
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         gap: 4,
+        width: "90%",
       }}
     >
       <VideoCard
@@ -21,8 +21,7 @@ const HomePage = () => {
         sx={{
           display: "flex",
           gap: 3,
-          width: "100%",
-          height: "20vh",
+          height: "28vh",
           flexDirection: "row",
           "@media (max-width: 900px)": {
             flexDirection: "column",
@@ -38,7 +37,7 @@ const HomePage = () => {
           content="A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made."
         />
       </Box>
-    </Container>
+    </Box>
   );
 };
 

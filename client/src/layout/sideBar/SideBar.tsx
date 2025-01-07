@@ -12,22 +12,7 @@ export default function SideBar() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: isMobile ? "row" : "column",
-        alignItems: "center",
-        justifyContent: isMobile ? "space-around" : "flex-start",
-        width: isMobile ? "100%" : "auto",
-        backgroundColor: isMobile ? "#f8f8f8" : "transparent",
-        padding: isMobile ? "10px 0" : "0",
-        position: isMobile ? "fixed" : "relative",
-        top: 0,
-        left: isMobile ? "0" : "0",
-        height: isMobile ? "auto" : "100vh",
-        zIndex: 1000,
-      }}
-    >
+    <Box>
       <List
         sx={{
           display: "flex",

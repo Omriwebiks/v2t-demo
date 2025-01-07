@@ -22,6 +22,7 @@ export default function SideBarItem({
         component={link ? Link : "div"}
         to={link}
         sx={{
+          padding: "0",
           display: "flex",
           flexDirection: "column",
           textDecoration: "none",
@@ -32,9 +33,9 @@ export default function SideBarItem({
           sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
-            height: "23px",
-            width: "22px",
+            alignItems: "flex-end",
+            height: "57.5px",
+            width: "55px",
           }}
         >
           {icon}
