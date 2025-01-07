@@ -80,7 +80,11 @@ export default function SideBar() {
           text={isMobile ? "" : "Favorites"}
           link="/favorites"
         />
-        <SideBarItem icon={<StarsIcon />} text={isMobile ? "" : "Projects"} />
+        <SideBarItem
+          icon={<StarsIcon />}
+          text={isMobile ? "" : "Projects"}
+          link="/project"
+        />
       </List>
     </Box>
   );
