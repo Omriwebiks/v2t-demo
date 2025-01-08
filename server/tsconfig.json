@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",                   // JavaScript version to compile to
-    "module": "CommonJS",              // Module system
-    "rootDir": "./src",                // Source code folder
-    "outDir": "./dist",                // Compiled JavaScript output folder
-    "esModuleInterop": true,           // Better compatibility with ES modules
-    "strict": true,                    // Enable strict type checking
-    "resolveJsonModule": true,         // Allow importing JSON files
-    "skipLibCheck": true               // Skip library declaration checks
+    "target": "ES6",
+    "module": "CommonJS",
+    "rootDir": ".",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "include": ["src"],                  // Include only 'src' folder
-  "exclude": ["node_modules"]          // Exclude 'node_modules'
+  "include": ["src", "__tests__"]
 }
