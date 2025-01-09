@@ -1,4 +1,4 @@
-import IProject from "../types/interface/IProject";
+import IProject from "../types/interface/IProject.js";
 import mongoose, { Schema } from 'mongoose';
 
 

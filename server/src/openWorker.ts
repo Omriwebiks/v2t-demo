@@ -1,10 +1,11 @@
 
-import e from 'express';
 import { Worker } from 'worker_threads';
 
 console.log('[Main Thread] Starting worker...');
 
-const worker = new Worker('./worker.js');
+const worker = new Worker("./src/worker/Worker.ts", {
+    execArgv: ["--loader", "ts-node/esm"],
+  });
 
 
 worker.on('message', (message) => {

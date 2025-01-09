@@ -1,12 +1,12 @@
 import { parentPort } from 'worker_threads';
 import workerLogic from './worker.logic';
 
-parentPort?.on('buildQueue', (message) => {
+parentPort?.on('buildQueue',async (message) => {
     console.log(`[Worker] Building queue...`);
-    workerLogic.initializeQueue()    
+    await workerLogic.initializeQueue()    
 });
 
-parentPort?.on('processQueue', (message) => {
+parentPort?.on('processQueue', async (message) => {
     console.log(`[Worker] Building queue...`);
-    workerLogic.processQueue()    
+    await workerLogic.processQueue()    
 });

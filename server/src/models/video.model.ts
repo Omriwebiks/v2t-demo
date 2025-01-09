@@ -1,5 +1,5 @@
-import Rating from "../types/enum/rating.enum";
-import IVideo from "../types/interface/Ividoe";
+import Rating from "../types/enum/rating.enum.js";
+import IVideo from "../types/interface/Ividoe.js";
 import mongoose, { Schema } from 'mongoose';
 
 
@@ -9,14 +9,14 @@ const videoSchema = new Schema<IVideo>({
     GT: { type: String, required: true },
     url: { type: String },
     status: { type: String, default:'uploading' },
-    createdAt: { type: Date, required: true },
-    updateAt: { type: Date, required: true },
-    lastStatusChange: { type: Date, required: true },
+    createdAt: { type: Date , default: Date.now },
+    updateAt: { type: Date, default: Date.now },
+    lastStatusChange: { type: Date, default: Date.now  },
     name: { type: String, required: true },
-    modelOutput: { type: String, required: true },
-    rating: { enum: Rating, required: true },
-    chips: { type: [String], required: true },
-    isDeleted: { type: Boolean, required: true }
+    modelOutput: { type: String },
+    rating: { type: Number, enum: Object.values(Rating), required: true },
+    chips: { type: [String] },
+    isDeleted: { type: Boolean, default: false  }
 });
 
 const Video = mongoose.model<IVideo>('Video', videoSchema);
