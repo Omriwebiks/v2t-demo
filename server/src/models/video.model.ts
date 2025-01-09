@@ -5,7 +5,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const videoSchema = new Schema<IVideo>({
     userId: { type: Schema.Types.ObjectId, required: true },
-    projectId: { type: Schema.Types.ObjectId, required: true },
+    projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project' },
     GT: { type: String, required: true },
     url: { type: String },
     status: { type: String, default:'uploading' },

@@ -3,7 +3,7 @@ import IVideo from "../types/interface/Ividoe";
 import IVideoDTO from "../types/interface/DTO/IVideoDTO";
 import videoRepostory from "../reposetries/video.repostory";
 import { IMulterFile } from "../types/interface/IMulterFile";
-import mongoose,{ ObjectId } from "mongoose";
+import { ObjectId } from "mongoose";
 import VideoQueue from "../classes/Queue";
 import worker from "../openWorker";
 import AWS from "aws-sdk";
@@ -27,7 +27,7 @@ const uploadVideo = async (
 export const uploadVideoToS3 = async (
   file: IMulterFile,
   video: IVideo
-): Promise<mongoose.Types.ObjectId> => {
+): Promise<ObjectId> => {
   if (!file) throw new Error("File is required");
   if (!video) throw new Error("Video is required");
   const Bucket = process.env.AWS_BUCKET_NAME;

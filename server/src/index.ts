@@ -5,6 +5,9 @@ import morgan from 'morgan';
 import VideoQueue from './classes/Queue';
 import Worker from './openWorker';
 dotenv.config();
+import connectDB from './dbConecction';
+
+connectDB();
 
 const app = express();
 
