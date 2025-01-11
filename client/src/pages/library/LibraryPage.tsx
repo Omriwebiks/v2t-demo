@@ -77,8 +77,7 @@ export default function LibraryPage() {
                 md: "30%",
                 lg: "19%",
               },
-              display: "flex",
-              justifyContent: "center",
+              marginBottom: 2,
             }}
           >
             <VideoImg title={video.title} project={video.project} />
