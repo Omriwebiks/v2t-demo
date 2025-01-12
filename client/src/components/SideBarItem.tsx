@@ -36,7 +36,7 @@ export default function SideBarItem({
           gap: "5px",
           color: "#CCC2DC",
           "&:hover .icon-container": {
-            backgroundColor: "#E8DEF8",
+            backgroundColor: "#4A4458",
           },
         }}
       >

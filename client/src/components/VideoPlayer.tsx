@@ -10,7 +10,7 @@ export default function VideoPlayer({
   return (
     <Paper
       sx={{
-        height: "55vh",
+        height: "566px",
         width: "100%",
         borderRadius: "25px",
         overflow: "hidden",

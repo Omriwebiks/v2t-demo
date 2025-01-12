@@ -18,7 +18,7 @@ function App() {
       <div
         style={{
           marginTop: "2%",
-          marginLeft: isMobile ? "5%" : "2%",
+          marginLeft: isMobile ? "5%" : "8%",
           flex: 1,
         }}
       >
