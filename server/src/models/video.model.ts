@@ -14,7 +14,7 @@ const videoSchema = new Schema<IVideo>({
     lastStatusChange: { type: Date, default: Date.now  },
     name: { type: String, required: true },
     modelOutput: { type: String },
-    rating: { type: Number, enum: Object.values(Rating), required: true },
+    rating: { type: Number, default: Rating.Four },
     chips: { type: [String] },
     isDeleted: { type: Boolean, default: false  }
 });

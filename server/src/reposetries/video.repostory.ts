@@ -1,7 +1,8 @@
 import { ObjectId } from "mongoose";
-import Video from "../models/video.model";
-import IVideoDTO from "../types/interface/DTO/IVideoDTO";
-import IVideo from "../types/interface/Ividoe";
+import Video from "../models/video.model.js";
+import IVideoDTO from "../types/interface/DTO/IVideoDTO.js";
+import IVideo from "../types/interface/Ividoe.js";
+import Rating from "../types/enum/rating.enum.js";
 
 const createVideo = async (data: IVideoDTO): Promise<IVideo> => {
   if (!data) throw new Error("Data is required");
@@ -10,7 +11,6 @@ const createVideo = async (data: IVideoDTO): Promise<IVideo> => {
     projectId: data.projectId,
     GT: data.GT,
     name: data.name,
-    rating: 0,
     chips: data.chips,
   });
 

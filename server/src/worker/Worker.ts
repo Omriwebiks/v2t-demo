@@ -1,5 +1,5 @@
 import { parentPort } from 'worker_threads';
-import workerLogic from './worker.logic';
+import workerLogic from './worker.logic.js';
 
 parentPort?.on('buildQueue',async (message) => {
     console.log(`[Worker] Building queue...`);

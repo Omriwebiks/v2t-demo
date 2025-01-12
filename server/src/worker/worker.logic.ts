@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongodb';
 import mongoose from 'mongoose';
-import Utils from './utils';
-import VideoQueue from '../classes/Queue';
-import IVideo from '../types/interface/Ividoe';
+import Utils from './utils.js';
+import VideoQueue from '../classes/Queue.js';
+import IVideo from '../types/interface/Ividoe.js';
 
 async function processQueue() {
     console.log(`[Worker] Starting video processing...`);

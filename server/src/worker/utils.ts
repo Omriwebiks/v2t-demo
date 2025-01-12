@@ -1,5 +1,5 @@
 import { ObjectId } from "mongoose";
-import videoRepostory from "../reposetries/video.repostory";
+import videoRepostory from "../reposetries/video.repostory.js";
 
 async function updateStatus(videoId: ObjectId, status: string) {
   console.log(
