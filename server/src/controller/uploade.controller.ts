@@ -10,7 +10,7 @@ const upload = multer({ storage });
 const router = Router();
 
 router.post(
-  "/videos",
+  "/:projectId",
   upload.single("video"),
   async (req: Request & { file?: IMulterFile }, res: Response) => {
     try {
@@ -18,10 +18,11 @@ router.post(
         res.status(400).send("File not uploaded");
         return;
       }
-      console.log(req.file);
       
-      const answer = await uploadeService.uploadeVideo(req.file, req.body);
-      res.status(201).send('35');
+      const videoDate = {...req.body, projectId: req.params.projectId};
+      console.log(videoDate)
+      const answer = await uploadeService.uploadeVideo(req.file, videoDate);
+      res.status(201).send(answer);
       return;
     } catch (error) {
       console.error(error);

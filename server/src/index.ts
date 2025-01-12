@@ -4,7 +4,8 @@ import morgan from 'morgan';
 import Worker from './openWorker.js';
 import connectDB from './dbConecction.js';
 import 'dotenv/config'
-import uploadeRouter from './controller/uploade.controller.js';
+import projectController from './controller/project.controller.js';
+import videoController from './controller/video.controller.js';
 
 
 connectDB();
@@ -17,11 +18,9 @@ app.use(morgan('dev'));
 app.use(express.static('uploads'));
 
 
-app.use('/api/uploads',uploadeRouter)
+app.use('/api/videos',videoController)
+app.use('/api/project',projectController)
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, World! Express + TypeScript Server is running!');
-});
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).json({ message: 'Route not found' });
