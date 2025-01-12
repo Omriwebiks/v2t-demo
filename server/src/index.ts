@@ -1,13 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import VideoQueue from './classes/Queue.js';
 import Worker from './openWorker.js';
 import connectDB from './dbConecction.js';
 import 'dotenv/config'
 import uploadeRouter from './controller/uploade.controller.js';
-import fs from 'fs';
-import path from 'path';
+
 
 connectDB();
 
@@ -36,11 +34,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    if(VideoQueue.isEmpty()){
-        Worker.postMessage('buildQueue');
-    }
-    if (!fs.existsSync('./uploads')) {
-        fs.mkdirSync('./uploads');
-    }
+    Worker.buildQueue();
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
+
+export default app;

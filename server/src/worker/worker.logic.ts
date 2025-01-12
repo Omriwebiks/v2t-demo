@@ -1,5 +1,4 @@
-import { ObjectId } from 'mongodb';
-import mongoose from 'mongoose';
+import videoRepostory from '../reposetries/video.repostory.js';
 import Utils from './utils.js';
 import VideoQueue from '../classes/Queue.js';
 import IVideo from '../types/interface/Ividoe.js';
@@ -30,55 +29,26 @@ async function processQueue() {
     console.log(`[Worker] Queue is empty. Stopping worker.`);
 }
 
-
-function simulateDatabaseFetch() {
-    console.log('[Initializer] Simulating database fetch...');
-
-    return  [
-        {
-            _id: new mongoose.Types.ObjectId(new ObjectId()),
-            "status": "uploaded",
-            "created_at": "2024-06-01T10:00:00"
-        },
-        {
-            _id: new mongoose.Types.ObjectId(new ObjectId()),
-            "status": "processing",
-            "created_at": "2024-06-01T09:00:00"
-        },
-        {
-            _id: new mongoose.Types.ObjectId(new ObjectId()),
-            "status": "uploaded",
-            "created_at": "2024-06-01T11:00:00"
-        },
-        {
-            _id: new mongoose.Types.ObjectId(new ObjectId()),
-            "status": "processing",
-            "created_at": "2024-06-01T08:30:00"
-        }
-    ]
-    
-}
-
 async function initializeQueue() {
     console.log('[Initializer] Starting queue initialization...');
 
-    const videos = simulateDatabaseFetch();
+    const videos = await videoRepostory.getVideos({ status: { $in: ['uploaded', 'processing'] } });
 
     console.log(`[Initializer] Found ${videos.length} videos.`);
 
     videos.sort((a, b) => {
         if (a.status === b.status) {
-            return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+            return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         }
         return a.status === 'processing' ? -1 : 1;
     });
 
     console.log('[Initializer] Videos sorted successfully.');
 
-    // videos.forEach(video => {
-    //     VideoQueue.enqueue(video._id);
-    //     console.log(`[Initializer] Video ID: ${video._id} (Status: ${video.status}) added to the queue.`);
-    // });
+    videos.forEach(video => {
+        VideoQueue.enqueue(video._id);
+        console.log(`[Initializer] Video ID: ${video._id} (Status: ${video.status}) added to the queue.`);
+    });
 
     console.log('[Initializer] Queue initialization completed.');
 

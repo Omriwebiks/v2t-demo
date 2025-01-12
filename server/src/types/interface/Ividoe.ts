@@ -1,5 +1,5 @@
 import { ObjectId,Document } from 'mongoose';
-import Rating from '../enum/rating.enum';
+import Rating from '../enum/rating.enum.js';
 
 interface IVideo extends Document{
     _id: ObjectId;

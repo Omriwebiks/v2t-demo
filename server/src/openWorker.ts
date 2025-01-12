@@ -1,5 +1,6 @@
 
 import { Worker } from 'worker_threads';
+import VideoQueue from './classes/Queue.js';
 
 console.log('[Main Thread] Starting worker...');
 
@@ -20,4 +21,15 @@ worker.on('exit', (code) => {
     console.log(`[Main Thread] Worker exited with code ${code}`);
 });
 
-export default worker; 
+const buildQueue = () => {
+    if(VideoQueue.isEmpty()){
+        worker.postMessage('buildQueue');
+    }
+}
+
+const processQueue = () => {
+    if(VideoQueue.size() == 1){
+        worker.postMessage('processQueue');
+    }
+}
+export default {buildQueue, processQueue}; 

@@ -19,14 +19,20 @@ const createVideo = async (data: IVideoDTO): Promise<IVideo> => {
   return video.toObject();
 };
 
-const updateVideo = async (_id:ObjectId,data: Object): Promise<IVideo> => {
-    if (!data) throw new Error("Data is required");
-    
-    const video = await Video.findOneAndUpdate({_id},data,{new:true})
-    
-    if(!video) throw new Error("Video not found")
+const updateVideo = async (_id: ObjectId, data: Object): Promise<IVideo> => {
+  if (!data) throw new Error("Data is required");
 
-    return video.toObject();
-}
+  const video = await Video.findOneAndUpdate({ _id }, data, { new: true });
 
-export default { createVideo,updateVideo };
+  if (!video) throw new Error("Video not found");
+
+  return video.toObject();
+};
+
+const getVideos = async (filter: Object): Promise<IVideo[]> => {
+  const videos = await Video.find({ ...filter, isDeleted: false });
+
+  return videos ? videos.map((video) => video.toObject()) : [];
+};
+
+export default { createVideo, updateVideo, getVideos };

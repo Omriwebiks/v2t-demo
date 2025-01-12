@@ -9,7 +9,6 @@ import worker from "../openWorker.js";
 import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
 
 const Bucket = process.env.AWS_BUCKET_NAME;
-console.log(Bucket);
 
 
 const s3Client = new S3Client({ region: "us-east-1" });
@@ -22,7 +21,7 @@ const uploadeVideo = async (
   const videoId = await uploadeVideoToS3(file, video);
   VideoQueue.enqueue(videoId);
   if (VideoQueue.size() === 1) {
-    worker.postMessage("processQueue");
+    worker.processQueue();
   }
 
   return "The video is being processed";

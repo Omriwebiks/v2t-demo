@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node -r dotenv/config ./node_modules/.bin/jest",
+    "test": "node ./node_modules/jest/bin/jest.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "dev": "node --loader ts-node/esm -r dotenv/config src/index.ts",

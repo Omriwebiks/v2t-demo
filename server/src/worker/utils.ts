@@ -5,7 +5,10 @@ async function updateStatus(videoId: ObjectId, status: string) {
   console.log(
     `[StatusManager] Video ID: ${videoId} updated to status: ${status}`
   );
-  const video = await videoRepostory.updateVideo(videoId, { status });
+  const video = await videoRepostory.updateVideo(videoId, {
+    status,
+    lastStatusChange: new Date(),
+  });
   return video;
 }
 
