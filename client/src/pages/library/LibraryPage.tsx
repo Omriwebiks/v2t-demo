@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Chip, Typography } from "@mui/material";
-import VideoImg from "./VideoImg";
+import VideoCard from "../../components/VideoCard";
 import CheckIcon from "@mui/icons-material/Check";
 
 const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];
@@ -110,7 +110,7 @@ export default function LibraryPage() {
               },
             }}
           >
-            <VideoImg title={video.title} project={video.project} />
+            <VideoCard title={video.title} project={video.project} />
           </Box>
         ))}
       </Box>

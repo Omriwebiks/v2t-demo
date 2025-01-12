@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Chip, Typography } from "@mui/material";
-import VideoImg from "../library/VideoImg";
+import VideoImg from "../../components/VideoCard";
 import CheckIcon from "@mui/icons-material/Check";
 
 const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];

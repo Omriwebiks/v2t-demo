@@ -1,6 +1,12 @@
 import { Paper } from "@mui/material";
 
-export default function VideoCard({ src, alt }: { src: string; alt: string }) {
+export default function VideoPlayer({
+  src,
+  alt,
+}: {
+  src: string;
+  alt: string;
+}) {
   return (
     <Paper
       sx={{

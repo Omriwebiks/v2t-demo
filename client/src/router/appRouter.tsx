@@ -3,7 +3,7 @@ import HomePage from "../pages/home/HomePage";
 import LibraryPage from "../pages/library/LibraryPage";
 import FavoritesPage from "../pages/favorites/FavoritesPage";
 import ProjectPage from "../pages/project/ProjectPage";
-import VideoList from "../pages/project/VideoList";
+import VideoListPage from "../pages/project/VideoListPage";
 
 const AppRouter = () => {
   return (
@@ -12,7 +12,7 @@ const AppRouter = () => {
       <Route path="/library" element={<LibraryPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/project" element={<ProjectPage />} />
-      <Route path="/check" element={<VideoList />} />
+      <Route path="/check" element={<VideoListPage />} />
     </Routes>
   );
 };

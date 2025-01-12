@@ -5,7 +5,7 @@ interface VideoImgProps {
   project: string;
 }
 
-const VideoImg = ({ title, project }: VideoImgProps) => (
+const VideoCard = ({ title, project }: VideoImgProps) => (
   <Card sx={{ boxShadow: "none" }}>
     <Box
       component="img"
@@ -26,4 +26,4 @@ const VideoImg = ({ title, project }: VideoImgProps) => (
   </Card>
 );
 
-export default VideoImg;
+export default VideoCard;

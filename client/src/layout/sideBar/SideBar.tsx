@@ -5,7 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import StarsIcon from "@mui/icons-material/Stars";
 import MenuIcon from "@mui/icons-material/Menu";
-import SideBarItem from "./SideBarItem";
+import SideBarItem from "../../components/SideBarItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function SideBar() {
