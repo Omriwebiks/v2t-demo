@@ -71,6 +71,11 @@ export default function SideBar() {
           link="/project"
         />
       </List>
+      <SideBarItem
+        icon={<StarsIcon />}
+        text={isMobile ? "" : "check"}
+        link="/check"
+      />
     </Box>
   );
 }

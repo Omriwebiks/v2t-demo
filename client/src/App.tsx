@@ -19,6 +19,7 @@ function App() {
         style={{
           marginTop: "2%",
           marginLeft: isMobile ? "5%" : "2%",
+          flex: 1,
         }}
       >
         {<AppRouter />}
