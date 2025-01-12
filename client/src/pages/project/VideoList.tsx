@@ -2,8 +2,12 @@ import { useState } from "react";
 import { Box, Typography, Divider, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ModeToggle from "./ModeToogle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
-const playlistData = {
+const Data = {
   title: "Jail",
   creator: "Shabas",
   createdDate: "25.01.2024",
@@ -19,6 +23,8 @@ const playlistData = {
       time: "0:51",
       description:
         "Supporting line text lorem ipsum dolor sit amet, consectetur.",
+      rating: 5,
+      liked: false,
     },
     {
       id: 2,
@@ -28,6 +34,8 @@ const playlistData = {
       time: "0:52",
       description:
         "Supporting line text lorem ipsum dolor sit amet, consectetur.",
+      rating: 4,
+      liked: true,
     },
     {
       id: 3,
@@ -37,6 +45,8 @@ const playlistData = {
       time: "0:53",
       description:
         "Supporting line text lorem ipsum dolor sit amet, consectetur.",
+      rating: 3,
+      liked: false,
     },
   ],
 };
@@ -49,7 +59,7 @@ export default function Playlist() {
     <>
       <Box
         sx={{
-          backgroundImage: `url(${playlistData.backgroundImage})`,
+          backgroundImage: `url(${Data.backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: "40vh",
@@ -74,11 +84,11 @@ export default function Playlist() {
 
         <Box sx={{ mt: 4, textAlign: "left" }}>
           <Typography variant="h3" sx={{ fontWeight: "bold", mb: 1 }}>
-            {playlistData.title}
+            {Data.title}
           </Typography>
           <Typography variant="body2" sx={{ mb: 2 }}>
-            {playlistData.creator} | Created on {playlistData.createdDate} |
-            Last updated on {playlistData.lastUpdated}
+            {Data.creator} | Created on {Data.createdDate} | Last updated on{" "}
+            {Data.lastUpdated}
           </Typography>
           <Box sx={{ display: "flex", gap: 1 }}>
             <Button
@@ -101,7 +111,6 @@ export default function Playlist() {
                 color: "black",
                 borderRadius: "8px",
                 fontWeight: "600",
-
                 bgcolor: "#F7F1FA",
                 "&:hover": {
                   bgcolor: "rgba(255,255,255,0.3)",
@@ -120,7 +129,7 @@ export default function Playlist() {
         </Box>
 
         <Box>
-          {playlistData.videos.map((project, index) => (
+          {Data.videos.map((project, index) => (
             <Box key={project.id}>
               <Box
                 sx={{
@@ -149,14 +158,39 @@ export default function Playlist() {
                     {project.title}
                   </Typography>
                   <Typography>
-                    {playlistData.title} • {project.created} • {project.time}
+                    {Data.title} • {project.created} • {project.time}
                   </Typography>
                   <Typography>{project.description}</Typography>
                 </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "auto",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    {Array.from({ length: 5 }, (_, index) =>
+                      index < project.rating ? (
+                        <StarIcon key={index} color="warning" />
+                      ) : (
+                        <StarBorderIcon key={index} color="action" />
+                      )
+                    )}
+                  </Box>
+                  <IconButton aria-label="like" sx={{ marginLeft: 1 }}>
+                    {project.liked ? (
+                      <FavoriteIcon color="error" />
+                    ) : (
+                      <FavoriteBorderIcon />
+                    )}
+                  </IconButton>
+                </Box>
               </Box>
 
-              {index < playlistData.videos.length - 1 && (
-                <Divider sx={{ marginTop: 1 }} />
+              {index < Data.videos.length - 1 && (
+                <Divider sx={{ marginTop: 2 }} />
               )}
             </Box>
           ))}

@@ -11,47 +11,66 @@ export default function SideBarItem({
   icon,
   text = "",
   link,
+  isSelected = false,
+  onClick,
+  customStyles = {},
 }: {
   icon: JSX.Element;
   text?: string;
   link?: string;
+  isSelected?: boolean;
+  onClick?: () => void;
+  customStyles?: object;
 }) {
   return (
-    <ListItem>
+    <ListItem disablePadding>
       <ListItemButton
         component={link ? Link : "div"}
         to={link}
+        onClick={onClick}
         sx={{
-          padding: "0",
           display: "flex",
           flexDirection: "column",
           textDecoration: "none",
-          color: "inherit",
+          alignItems: "center",
+          gap: "5px",
+          "&:hover .icon-container": {
+            backgroundColor: "#E8DEF8",
+          },
         }}
       >
         <ListItemIcon
+          className="icon-container"
           sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "flex-end",
-            height: "57.5px",
-            width: "55px",
+            alignItems: "center",
+            height: "40px",
+            width: "40px",
+            borderRadius: "50%",
+            backgroundColor: isSelected ? "#E8DEF8" : "inherit",
+            transition: "background-color 0.2s ease-in-out",
+            ...customStyles,
           }}
         >
           {icon}
         </ListItemIcon>
-        <ListItemText
-          primary={
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-              }}
-            >
-              {text}
-            </Typography>
-          }
-        />
+        {text && (
+          <ListItemText
+            primary={
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: isSelected ? "bold" : "normal",
+                  color: isSelected ? "#000" : "inherit",
+                  textAlign: "center",
+                }}
+              >
+                {text}
+              </Typography>
+            }
+          />
+        )}
       </ListItemButton>
     </ListItem>
   );

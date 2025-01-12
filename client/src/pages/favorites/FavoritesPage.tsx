@@ -17,8 +17,9 @@ export default function FavoritesPage() {
   };
   return (
     <Box>
-      <Typography>Library</Typography>
-
+      <Typography variant="h5" sx={{ mb: 3 }}>
+        Favorites
+      </Typography>
       <Box
         sx={{
           width: "100%",
@@ -50,33 +51,61 @@ export default function FavoritesPage() {
             clickable
             variant={category === selectedCategory ? "filled" : "outlined"}
             sx={{
-              width: "10%",
-              fontSize: "1rem",
+              minWidth: { xs: "auto", sm: "10%" },
+              width: { xs: "calc(50% - 4px)", sm: "10%" },
+              fontSize: { xs: "0.875rem", sm: "1rem" },
               backgroundColor:
                 category === selectedCategory ? "#E8DEF8" : "white",
               color: category === selectedCategory ? "black" : "gray",
               borderRadius: "8px",
+              transition: "all 0.2s ease-in-out",
+              "&:hover": {
+                backgroundColor:
+                  category === selectedCategory
+                    ? "#E8DEF8"
+                    : "rgba(0, 0, 0, 0.04)",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                color:
+                  category === selectedCategory
+                    ? "black"
+                    : "rgba(0, 0, 0, 0.87)",
+              },
+              "&.MuiChip-clickable:hover": {
+                backgroundColor:
+                  category === selectedCategory
+                    ? "#E8DEF8"
+                    : "rgba(0, 0, 0, 0.04)",
+              },
             }}
           />
         ))}
       </Box>
+
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(5, 1fr)",
+          },
         }}
       >
         {videos.map((video, index) => (
           <Box
             key={index}
             sx={{
-              width: {
-                xs: "100%",
-                sm: "48%",
-                md: "30%",
-                lg: "19%",
+              cursor: "pointer",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.05)",
+                "& > *": {
+                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                  outline: "2px solid #E8DEF8",
+                },
               },
-              marginBottom: 2,
             }}
           >
             <VideoImg title={video.title} project={video.project} />

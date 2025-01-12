@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // הוספת useState
 import { Box, List } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import HomeIcon from "@mui/icons-material/Home";
@@ -10,6 +10,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function SideBar() {
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  const handleItemClick = (link: string) => {
+    setSelectedItem(link);
+  };
 
   return (
     <Box>
@@ -23,58 +29,56 @@ export default function SideBar() {
           gap: isMobile ? 2 : 0,
         }}
       >
-        <SideBarItem icon={<MenuIcon />} />
         <SideBarItem
-          icon={
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: isMobile ? "auto" : "60px",
-                height: isMobile ? "auto" : "50px",
-                backgroundColor: "#FFD8E4",
-                borderRadius: "12px",
-                padding: isMobile ? "10px" : "0",
-                "@media (max-width: 768px)": {
-                  width: "auto",
-                  height: "auto",
-                },
-                "@media (max-width: 480px)": {
-                  width: "auto",
-                  height: "auto",
-                },
-              }}
-            >
-              <AddIcon />
-            </Box>
-          }
+          icon={<MenuIcon />}
+          isSelected={selectedItem === "/menu"}
+          onClick={() => handleItemClick("/menu")}
+        />
+        <SideBarItem
+          icon={<AddIcon />}
+          customStyles={{
+            backgroundColor: "#FFD8E4",
+            height: "50px",
+            borderRadius: "4px",
+          }}
+          isSelected={selectedItem === "/add"}
+          onClick={() => handleItemClick("/add")}
         />
         <SideBarItem
           icon={<HomeIcon />}
           text={isMobile ? "" : "Player"}
           link="/"
+          isSelected={selectedItem === "/"}
+          onClick={() => handleItemClick("/")}
         />
         <SideBarItem
           icon={<MenuBookIcon />}
           text={isMobile ? "" : "Library"}
           link="/library"
+          isSelected={selectedItem === "/library"}
+          onClick={() => handleItemClick("/library")}
         />
         <SideBarItem
           icon={<StarsIcon />}
           text={isMobile ? "" : "Favorites"}
           link="/favorites"
+          isSelected={selectedItem === "/favorites"}
+          onClick={() => handleItemClick("/favorites")}
         />
         <SideBarItem
           icon={<StarsIcon />}
           text={isMobile ? "" : "Projects"}
           link="/project"
+          isSelected={selectedItem === "/project"}
+          onClick={() => handleItemClick("/project")}
         />
       </List>
       <SideBarItem
         icon={<StarsIcon />}
         text={isMobile ? "" : "check"}
         link="/check"
+        isSelected={selectedItem === "/check"}
+        onClick={() => handleItemClick("/check")}
       />
     </Box>
   );
