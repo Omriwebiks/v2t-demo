@@ -34,6 +34,7 @@ export default function SideBarItem({
           textDecoration: "none",
           alignItems: "center",
           gap: "5px",
+          color: "#CCC2DC",
           "&:hover .icon-container": {
             backgroundColor: "#E8DEF8",
           },
@@ -47,9 +48,11 @@ export default function SideBarItem({
             alignItems: "center",
             height: "40px",
             width: "40px",
-            borderRadius: "50%",
-            backgroundColor: isSelected ? "#E8DEF8" : "inherit",
+            borderRadius: "100px",
+            color: "#CCC2DC",
+            backgroundColor: isSelected ? "#4A4458" : "inherit",
             transition: "background-color 0.2s ease-in-out",
+
             ...customStyles,
           }}
         >
@@ -62,7 +65,6 @@ export default function SideBarItem({
                 variant="body2"
                 sx={{
                   fontWeight: isSelected ? "bold" : "normal",
-                  color: isSelected ? "#000" : "inherit",
                   textAlign: "center",
                 }}
               >

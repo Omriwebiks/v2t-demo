@@ -1,16 +1,17 @@
-import React, { useState } from "react"; // הוספת useState
+import React, { useState } from "react";
 import { Box, List } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import HomeIcon from "@mui/icons-material/Home";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import StarsIcon from "@mui/icons-material/Stars";
 import MenuIcon from "@mui/icons-material/Menu";
-import SideBarItem from "../../components/SideBarItem";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import SideBarItem from "../../components/SideBarItem";
+import logo from "../../assets/webiksLogo.svg";
 
 export default function SideBar() {
   const isMobile = useMediaQuery("(max-width: 768px)");
-
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const handleItemClick = (link: string) => {
@@ -18,15 +19,26 @@ export default function SideBar() {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "#1D1B20",
+        height: "100vh",
+        width: isMobile ? "100%" : "80px",
+        padding: isMobile ? "0 10px" : "20px 0",
+      }}
+    >
       <List
         sx={{
           display: "flex",
           flexDirection: isMobile ? "row" : "column",
-          width: isMobile ? "100%" : "auto",
+          alignItems: "center",
+          gap: isMobile ? 2 : 1.5, // Adjust gap for spacing
           padding: 0,
           margin: 0,
-          gap: isMobile ? 2 : 0,
         }}
       >
         <SideBarItem
@@ -37,33 +49,33 @@ export default function SideBar() {
         <SideBarItem
           icon={<AddIcon />}
           customStyles={{
-            backgroundColor: "#FFD8E4",
+            backgroundColor: "#633B48",
+            color: "white",
             height: "50px",
-            borderRadius: "4px",
+            width: "50px",
+            borderRadius: "16px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
           }}
           isSelected={selectedItem === "/add"}
           onClick={() => handleItemClick("/add")}
         />
         <SideBarItem
-          icon={<HomeIcon />}
+          icon={<PlayArrowIcon />}
           text={isMobile ? "" : "Player"}
           link="/"
           isSelected={selectedItem === "/"}
           onClick={() => handleItemClick("/")}
         />
+
         <SideBarItem
-          icon={<MenuBookIcon />}
+          icon={<FolderOpenIcon />}
           text={isMobile ? "" : "Library"}
           link="/library"
           isSelected={selectedItem === "/library"}
           onClick={() => handleItemClick("/library")}
-        />
-        <SideBarItem
-          icon={<StarsIcon />}
-          text={isMobile ? "" : "Favorites"}
-          link="/favorites"
-          isSelected={selectedItem === "/favorites"}
-          onClick={() => handleItemClick("/favorites")}
         />
         <SideBarItem
           icon={<StarsIcon />}
@@ -72,14 +84,29 @@ export default function SideBar() {
           isSelected={selectedItem === "/project"}
           onClick={() => handleItemClick("/project")}
         />
+        <SideBarItem
+          icon={<BookmarkBorderIcon />}
+          text={isMobile ? "" : "Favorites"}
+          link="/favorites"
+          isSelected={selectedItem === "/favorites"}
+          onClick={() => handleItemClick("/favorites")}
+        />
       </List>
-      <SideBarItem
-        icon={<StarsIcon />}
-        text={isMobile ? "" : "check"}
-        link="/check"
-        isSelected={selectedItem === "/check"}
-        onClick={() => handleItemClick("/check")}
-      />
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: isMobile ? "10px 0" : "20px 0",
+        }}
+      >
+        <img
+          src={logo}
+          alt="Webiks"
+          style={{ width: "80.26px", height: "31.08px" }}
+        />
+      </Box>
     </Box>
   );
 }
