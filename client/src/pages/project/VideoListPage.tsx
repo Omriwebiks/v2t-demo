@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ModeToggle from "../../components/ModeToogle";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ModeToggle from "../../components/ModeToogle";
 import ListItem from "../../components/ListItem";
 
 const Data = {
@@ -63,12 +63,7 @@ export default function VideoListPage() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "95%",
-        margin: "auto",
-      }}
-    >
+    <Box sx={{ width: "95%", margin: "auto" }}>
       <Box
         sx={{
           backgroundImage: `url(${Data.backgroundImage})`,
@@ -94,7 +89,7 @@ export default function VideoListPage() {
           <ArrowBackIcon />
         </IconButton>
 
-        <Box sx={{ mt: 4, textAlign: "left" }}>
+        <Box sx={{ mt: 4, textAlign: "left", width: "100%" }}>
           <Typography variant="h3" sx={{ fontWeight: "bold", mb: 1 }}>
             {Data.title}
           </Typography>
@@ -102,6 +97,36 @@ export default function VideoListPage() {
             {Data.creator} | Created on {Data.createdDate} | Last updated on{" "}
             {Data.lastUpdated}
           </Typography>
+          <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
+            <Button
+              variant="contained"
+              sx={{
+                color: "black",
+                borderRadius: "8px",
+                fontWeight: "600",
+                bgcolor: "#F7F1FA",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.3)",
+                },
+              }}
+            >
+              Delete Videos
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                color: "black",
+                borderRadius: "8px",
+                fontWeight: "600",
+                bgcolor: "#F7F1FA",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.3)",
+                },
+              }}
+            >
+              Add Videos
+            </Button>
+          </Box>
         </Box>
       </Box>
 
