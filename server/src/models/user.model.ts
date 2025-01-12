@@ -6,9 +6,8 @@ const userSchema = new Schema <IUser>({
     email: { type: String, required: true },
     password: { type: String, required: true },
     favorites: [{ type: Schema.Types.ObjectId, ref: 'Video' }],
-    projects: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
     createdAt: { type: Date, default: Date.now },
-    updateAt: { type: Date, default: Date.now },
+    loginAt: { type: Date, default: Date.now },
     isDeleted: { type: Boolean, default: false },
 });
 

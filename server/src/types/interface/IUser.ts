@@ -8,7 +8,7 @@ interface IUser extends Document{
     favorites: [ObjectId];
     projects: [ObjectId];
     createdAt: Date;
-    updateAt: Date;
+    loginAt: Date;
     isDeleted: boolean;
 }
 

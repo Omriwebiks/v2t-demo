@@ -1,9 +1,9 @@
-import { ObjectId } from "mongoose";
+import { Types } from "mongoose";
 
 class VideoQueue  {
-    static queue: ObjectId[] = [];
+    static queue: Types.ObjectId[] = [];
 
-    static enqueue(videoId:ObjectId) {
+    static enqueue(videoId:Types.ObjectId) {
         VideoQueue.queue.push(videoId);
         console.log(`[Queue] Video ID ${videoId} added to the queue.`);
     }

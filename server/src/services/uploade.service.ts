@@ -3,7 +3,7 @@ import IVideo from "../types/interface/Ividoe.js";
 import IVideoDTO from "../types/interface/DTO/IVideoDTO.js";
 import videoRepostory from "../reposetries/video.repostory.js";
 import { IMulterFile } from "../types/interface/IMulterFile.js";
-import { ObjectId } from "mongoose";
+import { Types } from "mongoose";
 import VideoQueue from "../classes/Queue.js";
 import worker from "../openWorker.js";
 import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
@@ -30,7 +30,7 @@ const uploadeVideo = async (
 export const uploadeVideoToS3 = async (
   file: IMulterFile,
   video: IVideo
-): Promise<ObjectId> => {
+): Promise<Types.ObjectId> => {
   if (!file) throw new Error("File is required");
   if (!video) throw new Error("Video is required");
   if (!Bucket) throw new Error("AWS_BUCKET_NAME is not defined");

@@ -2,8 +2,7 @@ interface IVideoDTO {
     userId: string;
     projectId: string;
     GT: string;
-    name: string;
-    chips: string[];
+    videoName: string;
 }
 
 export default IVideoDTO;

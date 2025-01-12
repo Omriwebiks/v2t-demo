@@ -4,11 +4,10 @@ interface IProject extends Document{
     _id: ObjectId;
     img?: string;
     description: string;
-    userId: ObjectId;
     videos: [ObjectId];
     createdAt: Date;
     updateAt: Date;
-    name: string;
+    projectName: string;
     isDeleted: boolean;
 }
 

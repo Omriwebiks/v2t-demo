@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { Types } from "mongoose";
 import Video from "../models/video.model.js";
 import IVideoDTO from "../types/interface/DTO/IVideoDTO.js";
 import IVideo from "../types/interface/Ividoe.js";
@@ -10,8 +10,7 @@ const createVideo = async (data: IVideoDTO): Promise<IVideo> => {
     userId: data.userId,
     projectId: data.projectId,
     GT: data.GT,
-    name: data.name,
-    chips: data.chips,
+    videoName: data.videoName,
   });
 
   await video.save();
@@ -19,7 +18,10 @@ const createVideo = async (data: IVideoDTO): Promise<IVideo> => {
   return video.toObject();
 };
 
-const updateVideo = async (_id: ObjectId, data: Object): Promise<IVideo> => {
+const updateVideo = async (
+  _id: Types.ObjectId,
+  data: Object
+): Promise<IVideo> => {
   if (!data) throw new Error("Data is required");
 
   const video = await Video.findOneAndUpdate({ _id }, data, { new: true });

@@ -1,7 +1,7 @@
-import { ObjectId } from "mongoose";
+import { Types } from "mongoose";
 import videoRepostory from "../reposetries/video.repostory.js";
 
-async function updateStatus(videoId: ObjectId, status: string) {
+async function updateStatus(videoId: Types.ObjectId, status: string) {
   console.log(
     `[StatusManager] Video ID: ${videoId} updated to status: ${status}`
   );
@@ -15,7 +15,7 @@ async function updateStatus(videoId: ObjectId, status: string) {
 async function sendToModel(videoUrl: string) {
   console.log(`[ModelService] Sending Video ID: ${videoUrl} to the model...`);
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     console.log(`[ModelService] Video ID: ${videoUrl} processed successfully.`);
     return { success: true };
   } catch (error) {
