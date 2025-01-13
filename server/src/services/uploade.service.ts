@@ -1,17 +1,13 @@
-import Video from "../models/video.model.js";
 import IVideo from "../types/interface/Ividoe.js";
 import IVideoDTO from "../types/interface/DTO/IVideoDTO.js";
 import videoRepostory from "../reposetries/video.repostory.js";
 import { IMulterFile } from "../types/interface/IMulterFile.js";
 import { Types } from "mongoose";
 import VideoQueue from "../classes/Queue.js";
-import worker from "../openWorker.js";
-import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
-
-const Bucket = process.env.AWS_BUCKET_NAME;
+import uploadToS3 from "./s3.service.js";
 
 
-const s3Client = new S3Client({ region: "us-east-1" });
+
 
 const uploadeVideo = async (
   file: IMulterFile,
@@ -20,10 +16,6 @@ const uploadeVideo = async (
   const video: IVideo = await videoRepostory.createVideo(data);
   const videoId = await uploadeVideoToS3(file, video);
   VideoQueue.enqueue(videoId);
-  if (VideoQueue.size() === 1) {
-    worker.processQueue();
-  }
-
   return "The video is being processed";
 };
 
@@ -33,25 +25,14 @@ export const uploadeVideoToS3 = async (
 ): Promise<Types.ObjectId> => {
   if (!file) throw new Error("File is required");
   if (!video) throw new Error("Video is required");
-  if (!Bucket) throw new Error("AWS_BUCKET_NAME is not defined");
 
   const key = `${video._id}-${file.originalname}`;
-  const uploadParams = {
-    Bucket,
-    Key: key,
-    Body: file.buffer,
-  };
 
   try {
-    const putCommand = new PutObjectCommand(uploadParams);
-    await s3Client.send(putCommand);
-
-    const headCommand = new HeadObjectCommand({ Bucket, Key: key });
-    const headData = await s3Client.send(headCommand);
-
-    if (headData) {
+    const url = await uploadToS3(key,file.buffer);
+    if (url) {
       const updatedVideo = await videoRepostory.updateVideo(video._id, {
-        url: `https://${Bucket}.s3.amazonaws.com/${key}`,
+        url,
         status: "uploaded",
       });
       return updatedVideo._id;

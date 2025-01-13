@@ -5,6 +5,6 @@ export interface IMulterFile {
     encoding: string;
     mimetype: string;
     size: number;
-    buffer?: Buffer;
+    buffer: Buffer;
 }
 export default IMulterFile;
