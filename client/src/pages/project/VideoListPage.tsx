@@ -4,6 +4,17 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ModeToggle from "../../components/ModeToogle";
 import ListItem from "../../components/ListItem";
 
+type Video = {
+  id: number;
+  title: string;
+  created: string;
+  updated: string;
+  time: string;
+  description: string;
+  rating: number;
+  liked: boolean;
+};
+
 const Data = {
   title: "Jail",
   creator: "Shabas",
@@ -48,22 +59,25 @@ const Data = {
   ],
 };
 
-export default function VideoListPage() {
+export default function VideoListPage(): JSX.Element {
   const [view, setView] = useState("list");
-  const [videos, setVideos] = useState(Data.videos);
-
   const toggleItems = ["list", "grid"];
 
-  const handleToggleLike = (id: number) => {
-    setVideos(
-      videos.map((video) =>
-        video.id === id ? { ...video, liked: !video.liked } : video
-      )
-    );
+  const handleToggleLike = (id): void => {};
+
+  const buttonStyle = {
+    color: "black",
+    borderRadius: "8px",
+    fontWeight: "400",
+    bgcolor: "info.main",
+    "&:hover": {
+      bgcolor: "rgba(255,255,255,0.3)",
+    },
   };
 
   return (
     <Box sx={{ width: "95%", margin: "auto" }}>
+      {/* Header Section */}
       <Box
         sx={{
           backgroundImage: `url(${Data.backgroundImage})`,
@@ -79,13 +93,7 @@ export default function VideoListPage() {
           width: "100%",
         }}
       >
-        <IconButton
-          sx={{
-            position: "absolute",
-            top: 16,
-            left: 16,
-          }}
-        >
+        <IconButton sx={{ position: "absolute", top: 16, left: 16 }}>
           <ArrowBackIcon />
         </IconButton>
 
@@ -93,58 +101,36 @@ export default function VideoListPage() {
           <Typography variant="h3" sx={{ fontWeight: "bold", mb: 1 }}>
             {Data.title}
           </Typography>
-          <Typography variant="body2" sx={{ mb: 2 }}>
+          <Typography variant="body2" sx={{ mb: 2, color: "info.dark" }}>
             {Data.creator} | Created on {Data.createdDate} | Last updated on{" "}
             {Data.lastUpdated}
           </Typography>
           <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
-            <Button
-              variant="contained"
-              sx={{
-                color: "black",
-                borderRadius: "8px",
-                fontWeight: "600",
-                bgcolor: "#F7F1FA",
-                "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.3)",
-                },
-              }}
-            >
+            <Button variant="contained" sx={buttonStyle}>
               Delete Videos
             </Button>
-            <Button
-              variant="contained"
-              sx={{
-                color: "black",
-                borderRadius: "8px",
-                fontWeight: "600",
-                bgcolor: "#F7F1FA",
-                "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.3)",
-                },
-              }}
-            >
+            <Button variant="contained" sx={buttonStyle}>
               Add Videos
             </Button>
           </Box>
         </Box>
       </Box>
 
+      {/* Toggle Section */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
         <ModeToggle items={toggleItems} view={view} setView={setView} />
       </Box>
 
+      {/* Video List */}
       <Box sx={{ mt: 3, width: "100%" }}>
-        {videos.map((video, index) => (
+        {Data.videos.map((video, index) => (
           <ListItem
             key={video.id}
             item={video}
             projectTitle={Data.title}
-            showDivider={index < videos.length - 1}
+            showDivider={index < Data.videos.length - 1}
             onToggleLike={handleToggleLike}
-            sx={{
-              width: "100%",
-            }}
+            sx={{ width: "100%" }}
           />
         ))}
       </Box>

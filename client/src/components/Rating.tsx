@@ -32,17 +32,17 @@ const Rating: React.FC<RatingProps> = ({
             sx={{ padding: 0 }}
           >
             {index < rating ? (
-              <StarIcon color="warning" />
+              <StarIcon sx={{ color: "info.main" }} />
             ) : (
-              <StarBorderIcon color="action" />
+              <StarBorderIcon sx={{ color: "info.main" }} />
             )}
           </IconButton>
         ) : (
           <Box key={index}>
             {index < rating ? (
-              <StarIcon color="warning" />
+              <StarIcon sx={{ color: "info.main" }} />
             ) : (
-              <StarBorderIcon color="action" />
+              <StarBorderIcon sx={{ color: "info.main" }} />
             )}
           </Box>
         )

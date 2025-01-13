@@ -47,7 +47,7 @@ const ListItem: React.FC<ListItemProps> = ({
             borderRadius: "8px",
           }}
         />
-        <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
+        <Box sx={{ color: "info.main" }}>
           <Typography
             sx={{
               fontSize: "2rem",
