@@ -33,7 +33,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    Worker.buildQueue();
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
 
