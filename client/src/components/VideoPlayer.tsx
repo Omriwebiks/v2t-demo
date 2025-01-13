@@ -1,20 +1,17 @@
 import { Paper } from "@mui/material";
 
-export default function VideoPlayer({
-  src,
-  alt,
-}: {
+interface VideoPlayerProps {
   src: string;
   alt: string;
-}) {
+}
+
+export default function VideoPlayer({ src, alt }: VideoPlayerProps) {
   return (
     <Paper
       sx={{
-        height: "566px",
-        width: "100%",
         borderRadius: "25px",
         overflow: "hidden",
-        bgcolor: "#e9ecef",
+        bgcolor: "secondary.light",
       }}
     >
       <img

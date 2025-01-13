@@ -9,16 +9,12 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
   return (
     <Paper
-      elevation={8}
       sx={{
-        flex: "1 1 auto",
-        maxWidth: { xs: "100%", md: "45%", lg: "50%" },
-        height: "auto",
         p: 3,
         borderRadius: "28px",
-        bgcolor: "#1D1B20",
+        bgcolor: "secondary.main",
         overflow: "clip",
-        color: "#E6E0E9",
+        color: "info.main",
         boxSizing: "border-box",
       }}
     >
@@ -26,7 +22,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
         variant="h6"
         sx={{
           lineHeight: "32px",
-          fontSize: { xs: "1.25rem", md: "1.5rem" },
+          fontSize: { md: "1.5rem" },
         }}
       >
         {title}
@@ -35,7 +31,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
         sx={{
           lineHeight: "20px",
           letterSpacing: "0.25px",
-          fontSize: { xs: "0.875rem", md: "1rem" },
+          fontSize: { md: "1rem" },
         }}
       >
         {content}
