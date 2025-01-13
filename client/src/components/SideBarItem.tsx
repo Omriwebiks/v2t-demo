@@ -34,9 +34,9 @@ export default function SideBarItem({
           textDecoration: "none",
           alignItems: "center",
           gap: "5px",
-          color: "#CCC2DC",
+          color: "info.main",
           "&:hover .icon-container": {
-            backgroundColor: "#4A4458",
+            backgroundColor: "info.dark",
           },
         }}
       >
@@ -49,8 +49,8 @@ export default function SideBarItem({
             height: "40px",
             width: "40px",
             borderRadius: "100px",
-            color: "#CCC2DC",
-            backgroundColor: isSelected ? "#4A4458" : "inherit",
+            color: "info.main",
+            backgroundColor: isSelected ? "info.dark" : "inherit",
             transition: "background-color 0.2s ease-in-out",
 
             ...customStyles,

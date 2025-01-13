@@ -11,20 +11,22 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
     <Paper
       elevation={8}
       sx={{
-        flex: "1 1 0%", // יש להגדיר את ערכי ה-flex באופן מפורש ולא להתמש בכותרת.
-        width: "647.5px",
-        height: "95%",
+        flex: "1 1 auto",
+        maxWidth: { xs: "100%", md: "45%", lg: "50%" },
+        height: "auto",
         p: 3,
         borderRadius: "28px",
         bgcolor: "#1D1B20",
         overflow: "clip",
         color: "#E6E0E9",
+        boxSizing: "border-box",
       }}
     >
       <Typography
         variant="h6"
         sx={{
           lineHeight: "32px",
+          fontSize: { xs: "1.25rem", md: "1.5rem" },
         }}
       >
         {title}
@@ -33,6 +35,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
         sx={{
           lineHeight: "20px",
           letterSpacing: "0.25px",
+          fontSize: { xs: "0.875rem", md: "1rem" },
         }}
       >
         {content}

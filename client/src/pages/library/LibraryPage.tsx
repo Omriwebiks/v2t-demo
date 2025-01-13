@@ -18,10 +18,6 @@ export default function LibraryPage() {
 
   return (
     <Box>
-      <Typography variant="h5" sx={{ mb: 3 }}>
-        Library
-      </Typography>
-
       <Box
         sx={{
           width: "100%",
@@ -82,16 +78,18 @@ export default function LibraryPage() {
           />
         ))}
       </Box>
-
+      <Typography variant="h5" sx={{ mb: 3, color: "#E6E0E9" }}>
+        Video Library
+      </Typography>
       <Box
         sx={{
           display: "grid",
           gap: 2,
           gridTemplateColumns: {
             xs: "1fr",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
-            lg: "repeat(5, 1fr)",
+            sm: "repeat(3, 1fr)",
+            md: "repeat(5, 1fr)",
+            lg: "repeat(8, 1fr)",
           },
         }}
       >
@@ -103,10 +101,6 @@ export default function LibraryPage() {
               transition: "all 0.3s ease-in-out",
               "&:hover": {
                 transform: "scale(1.05)",
-                "& > *": {
-                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-                  outline: "2px solid #E8DEF8",
-                },
               },
             }}
           >
