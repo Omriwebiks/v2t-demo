@@ -3,27 +3,23 @@ import { Box, Chip, Typography } from "@mui/material";
 import VideoCard from "../../components/VideoCard";
 import CheckIcon from "@mui/icons-material/Check";
 
-const categories = ["Jail", "Stones", "Border", "Aerial", "Road"];
-const videos = new Array(20).fill(0).map((_, index) => ({
-  title: index < 20 ? `Video ${index + 1}` : "Title",
+const categories = ["All", "Jail", "Stones", "Border", "Aerial", "Road"];
+const videos = Array.from({ length: 20 }, (_, index) => ({
+  title: `Video ${index + 1}`,
   project: "Stones",
 }));
 
 export default function LibraryPage() {
   const [selectedCategory, setSelectedCategory] = useState("Stones");
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <Box>
       <Box
         sx={{
-          width: "100%",
-          gap: 0.5,
+          marginTop: 2,
           display: "flex",
           flexWrap: "wrap",
+          gap: 0.5,
           marginBottom: 2,
         }}
       >
@@ -31,13 +27,7 @@ export default function LibraryPage() {
           <Chip
             key={category}
             label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0.5,
-                }}
-              >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
                 {category === selectedCategory && (
                   <CheckIcon fontSize="small" />
                 )}
@@ -45,42 +35,29 @@ export default function LibraryPage() {
               </Box>
             }
             color={category === selectedCategory ? "primary" : "default"}
-            onClick={() => handleCategoryChange(category)}
+            onClick={() => setSelectedCategory(category)}
             clickable
             variant={category === selectedCategory ? "filled" : "outlined"}
             sx={{
               minWidth: { xs: "auto", sm: "10%" },
               width: { xs: "calc(50% - 4px)", sm: "10%" },
               fontSize: { xs: "0.875rem", sm: "1rem" },
+              color: "info.main",
               backgroundColor:
-                category === selectedCategory ? "#E8DEF8" : "white",
-              color: category === selectedCategory ? "black" : "gray",
+                category === selectedCategory ? "info.dark" : "primary.main",
               borderRadius: "8px",
-              transition: "all 0.2s ease-in-out",
-              "&:hover": {
-                backgroundColor:
-                  category === selectedCategory
-                    ? "#E8DEF8"
-                    : "rgba(0, 0, 0, 0.04)",
-                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                color:
-                  category === selectedCategory
-                    ? "black"
-                    : "rgba(0, 0, 0, 0.87)",
-              },
-              "&.MuiChip-clickable:hover": {
-                backgroundColor:
-                  category === selectedCategory
-                    ? "#E8DEF8"
-                    : "rgba(0, 0, 0, 0.04)",
-              },
+              transition: "background-color 0.3s ease",
             }}
           />
         ))}
       </Box>
+
+      {/* Video Library Title */}
       <Typography variant="h5" sx={{ mb: 3, color: "#E6E0E9" }}>
         Video Library
       </Typography>
+
+      {/* Video Cards Grid */}
       <Box
         sx={{
           display: "grid",
@@ -98,7 +75,7 @@ export default function LibraryPage() {
             key={index}
             sx={{
               cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
+              transition: "transform 0.3s ease-in-out",
               "&:hover": {
                 transform: "scale(1.05)",
               },
