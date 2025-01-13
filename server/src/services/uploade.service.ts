@@ -4,9 +4,7 @@ import videoRepostory from "../reposetries/video.repostory.js";
 import { IMulterFile } from "../types/interface/IMulterFile.js";
 import { Types } from "mongoose";
 import VideoQueue from "../classes/Queue.js";
-import uploadToS3 from "./s3.service.js";
-
-
+import s3Service from "./s3.service.js";
 
 
 const uploadeVideo = async (
@@ -26,10 +24,10 @@ export const uploadeVideoToS3 = async (
   if (!file) throw new Error("File is required");
   if (!video) throw new Error("Video is required");
 
-  const key = `${video._id}-${file.originalname}`;
+  const key = `videos/${video._id}-${file.originalname}`;
 
   try {
-    const url = await uploadToS3(key,file.buffer);
+    const url = await s3Service.uploadToS3(key,file.buffer);
     if (url) {
       const updatedVideo = await videoRepostory.updateVideo(video._id, {
         url,

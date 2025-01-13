@@ -1,12 +1,7 @@
 import IMulterFile from "../types/interface/IMulterFile.js";
 import IVideoDTO from "../types/interface/DTO/IVideoDTO.js";
 import { Request, Response, NextFunction } from "express";
-
-interface IValidation {
-  status: boolean;
-  message: string;
-}
-
+import IValidation from "../types/interface/IValidation.js";
 
 const validation = (req: Request & { file?: IMulterFile }): IValidation => {
   const requiredFields: (keyof IVideoDTO)[] = [
