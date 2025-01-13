@@ -1,9 +1,10 @@
-import { Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
+import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 
 interface InfoCardProps {
   title: string;
-  content: string;
+  content?: string;
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
@@ -16,6 +17,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
         overflow: "clip",
         color: "info.main",
         boxSizing: "border-box",
+        width: "647.5px",
       }}
     >
       <Typography
@@ -34,8 +36,20 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
           fontSize: { md: "1rem" },
         }}
       >
-        {content}
+        {content ? content : "Select a video to play"}
       </Typography>
+      {!content && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <DoNotDisturbIcon sx={{ fontSize: "100px", color: "info.dark" }} />
+        </Box>
+      )}
     </Paper>
   );
 };

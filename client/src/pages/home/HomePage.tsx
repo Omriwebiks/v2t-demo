@@ -3,11 +3,12 @@ import { Box } from "@mui/material";
 import InfroCard from "../../components/InfoCard";
 import VideoPlayer from "../../components/VideoPlayer";
 import exPhoto from "../../assets/exPhoto.svg";
+import PlayVideoPlayer from "../../components/playVideoPlayer";
 
 const data = {
   video: {
     src: exPhoto,
-    alt: "video content",
+    alt: "example",
   },
   cards: [
     {
@@ -32,33 +33,37 @@ const HomePage: React.FC = () => {
         flexDirection: "column",
         gap: 2,
         p: 2,
-        boxSizing: "border-box", // חשוב להוסיף כדי שהפדינג לא יגרום לגלילה
+        boxSizing: "border-box",
       }}
     >
-      {/* Video Player */}
       <Box
         sx={{
           width: "100%",
-          flex: "2", // יקבל 2 חלקים מהמקום הפנוי
+          flex: "2",
           borderRadius: 2,
           overflow: "hidden",
-          backgroundColor: "#1F2937",
         }}
       >
-        <VideoPlayer src={data.video.src} alt={data.video.alt} />
+        {data.video ? (
+          <VideoPlayer src={data.video.src} alt={data.video.alt} />
+        ) : (
+          <PlayVideoPlayer />
+        )}
       </Box>
 
       {/* Info Cards */}
       <Box
         sx={{
           display: "flex",
-          gap: 2,
-          width: "100%",
-          flex: "1", // יקבל חלק 1 מהמקום הפנוי
+          gap: 3,
+          flex: "1",
         }}
       >
         {data.cards.map((card) => (
-          <InfroCard title={card.title} content={card.content} />
+          <InfroCard
+            title={card.title}
+            content={card.content ? card.content : ""}
+          />
         ))}
       </Box>
     </Box>
